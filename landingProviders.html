@@ -1,0 +1,2656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f8f5">
+    <meta name="description"
+        content="Care Bridge for professionals — receive clear job alerts, accept assignments, and grow your service business.">
+    <title>Care Bridge — For Service Professionals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --paper: #f7f8f5;
+            --white: #fff;
+            --ink: #142b27;
+            --muted: #64736e;
+            --green: #176b55;
+            --green-dark: #104d3f;
+            --mint: #e5f2e9;
+            --orange: #e98b51;
+            --line: #e3e9e4;
+            --shadow: 0 24px 70px rgba(23, 53, 44, .09);
+            --radius: 24px
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        button {
+            font: inherit
+        }
+
+        .wrap {
+            width: min(1160px, calc(100% - 48px));
+            margin-inline: auto
+        }
+
+        .topline {
+            height: 5px;
+            background: linear-gradient(90deg, var(--green) 0 72%, var(--orange) 72% 100%)
+        }
+
+        nav {
+            /* position: sticky; */
+            top: 0;
+            z-index: 50;
+            background: rgba(247, 248, 245, .88);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(227, 233, 228, .8)
+        }
+
+        .nav-inner {
+            height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 11px;
+            font-family: Manrope, sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: -.7px;
+            white-space: nowrap
+        }
+
+        .brand-mark {
+            display: grid;
+            place-items: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 13px;
+            background: var(--green);
+            color: #fff;
+            font-size: 17px;
+            box-shadow: 0 6px 16px #176b552b
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            color: #52645e;
+            font-size: .91rem;
+            font-weight: 600
+        }
+
+        .nav-links a:hover {
+            color: var(--green)
+        }
+
+        .nav-cta,
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 0;
+            border-radius: 999px;
+            font-weight: 700;
+            transition: transform .2s, background .2s, box-shadow .2s;
+            cursor: pointer
+        }
+
+        .nav-cta {
+            padding: 12px 19px;
+            background: var(--ink);
+            color: #fff;
+            font-size: .88rem
+        }
+
+        .nav-cta:hover,
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px #142b2726
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 1px solid var(--line);
+            background: #fff;
+            border-radius: 12px;
+            width: 42px;
+            height: 42px;
+            color: var(--ink)
+        }
+
+        /* HERO */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.03fr .97fr;
+            gap: 54px;
+            align-items: center;
+            padding: 78px 0 92px;
+            min-height: 650px
+        }
+
+        .hero-copy {
+            position: relative;
+            z-index: 2
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 13px;
+            border: 1px solid #dce8de;
+            background: #fff;
+            border-radius: 999px;
+            color: var(--green);
+            font-size: .76rem;
+            font-weight: 800;
+            letter-spacing: .7px;
+            text-transform: uppercase;
+            margin-bottom: 23px
+        }
+
+        .eyebrow i {
+            color: var(--orange)
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: Manrope, sans-serif;
+            letter-spacing: -1.3px
+        }
+
+        h1 {
+            font-size: clamp(3.25rem, 5.4vw, 5.15rem);
+            line-height: 1.02;
+            font-weight: 800;
+            max-width: 620px
+        }
+
+        h1 em {
+            font-style: normal;
+            color: var(--green)
+        }
+
+        .hero-copy>p {
+            max-width: 550px;
+            margin: 25px 0 29px;
+            color: var(--muted);
+            font-size: 1.1rem;
+            line-height: 1.85
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 30px
+        }
+
+        .btn {
+            padding: 15px 23px;
+            font-size: .94rem
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: #fff;
+            box-shadow: 0 8px 20px #176b552b
+        }
+
+        .btn-secondary {
+            background: #fff;
+            border: 1px solid #dbe3dc;
+            color: var(--ink)
+        }
+
+        .btn-secondary:hover {
+            background: #f0f5ef
+        }
+
+        .hero-notes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 17px;
+            color: #53665e;
+            font-size: .84rem;
+            font-weight: 600
+        }
+
+        .hero-notes span {
+            display: flex;
+            align-items: center;
+            gap: 7px
+        }
+
+        .hero-notes i {
+            color: var(--green)
+        }
+
+        /* HERO VISUAL — Provider Dashboard Mockup */
+        .hero-visual {
+            position: relative;
+            min-height: 530px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px
+        }
+
+        .hero-visual:before {
+            content: "";
+            position: absolute;
+            width: 108%;
+            height: 94%;
+            background: linear-gradient(135deg, #e7f2e9 0%, #d5e9dc 100%);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            z-index: 0;
+            transform: rotate(-5deg);
+            box-shadow: inset 0 0 40px #ffffff80
+        }
+
+        .hero-visual:after {
+            content: "";
+            position: absolute;
+            width: 108%;
+            height: 94%;
+            background-image: linear-gradient(#176b550c 1px, transparent 1px), linear-gradient(90deg, #176b550c 1px, transparent 1px);
+            background-size: 30px 30px;
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            z-index: 1;
+            transform: rotate(-5deg);
+            pointer-events: none
+        }
+
+        .floating-badge {
+            position: absolute;
+            top: 35px;
+            left: -7px;
+            background: var(--orange);
+            color: #fff;
+            padding: 12px 18px;
+            border-radius: 15px;
+            font-weight: 800;
+            font-size: .9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 12px 30px #e98b514d;
+            z-index: 4;
+            transform: rotate(-3deg)
+        }
+
+        .float-stat {
+            position: absolute;
+            background: #ffffffeb;
+            backdrop-filter: blur(12px);
+            border: 1px solid #ffffffcc;
+            padding: 13px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px #00000012;
+            z-index: 4;
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .float-stat.top-right {
+            top: 90px;
+            right: -12px;
+            transform: rotate(2deg)
+        }
+
+        .float-stat.bottom-left {
+            bottom: 35px;
+            left: -18px;
+            transform: rotate(-2deg)
+        }
+
+        .float-stat>i {
+            width: 37px;
+            height: 37px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem
+        }
+
+        .float-stat .fa-coins {
+            background: #fef3c7;
+            color: #d97706
+        }
+
+        .float-stat .fa-star {
+            background: #fce7f3;
+            color: #db2777
+        }
+
+        .float-stat div strong {
+            display: block;
+            font-size: 1rem;
+            color: var(--ink);
+            line-height: 1.3
+        }
+
+        .float-stat div span {
+            font-size: .67rem;
+            color: var(--muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            white-space: nowrap
+        }
+
+        /* Dashboard app mockup — provider POV */
+        .app-mockup {
+            position: relative;
+            z-index: 3;
+            width: 310px;
+            background: #fff;
+            border-radius: 40px;
+            padding: 11px;
+            box-shadow: 0 40px 80px #0f172a26, 0 0 0 1px #00000008;
+            transform: rotate(1deg);
+            display: flex;
+            flex-direction: column
+        }
+
+        .app-screen {
+            background: #f8fafc;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+            height: 475px;
+            display: flex;
+            flex-direction: column
+        }
+
+        .app-content {
+            position: relative;
+            z-index: 1;
+            padding: 17px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            gap: 11px
+        }
+
+        .app-topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 7px
+        }
+
+        .app-topbar-left {
+            display: flex;
+            flex-direction: column
+        }
+
+        .app-topbar-left small {
+            font-size: .62rem;
+            color: var(--muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .05em
+        }
+
+        .app-topbar-left strong {
+            font-size: .95rem;
+            font-weight: 800;
+            color: var(--ink);
+            letter-spacing: -.3px
+        }
+
+        .app-topbar-avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+            box-shadow: 0 3px 8px #00000012
+        }
+
+        .app-earnings {
+            background: linear-gradient(140deg, #176b55 0%, #0f5240 100%);
+            border-radius: 18px;
+            padding: 16px;
+            color: #fff;
+            position: relative;
+            overflow: hidden
+        }
+
+        .app-earnings:after {
+            content: "";
+            position: absolute;
+            right: -20px;
+            top: -20px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #ffffff0f
+        }
+
+        .app-earnings small {
+            font-size: .62rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            color: #a7d6bb
+        }
+
+        .app-earnings strong {
+            display: block;
+            font-size: 1.55rem;
+            font-weight: 800;
+            letter-spacing: -.5px;
+            margin-top: 3px
+        }
+
+        .app-earnings .trend {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: .68rem;
+            font-weight: 700;
+            background: #ffffff1a;
+            padding: 3px 8px;
+            border-radius: 20px;
+            margin-top: 8px;
+            color: #c4ead1
+        }
+
+        .app-job {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 13px;
+            box-shadow: 0 6px 16px #00000008
+        }
+
+        .app-job-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 9px
+        }
+
+        .app-job-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 9px;
+            background: #e5f2e9;
+            color: var(--green);
+            display: grid;
+            place-items: center;
+            font-size: .85rem;
+            flex-shrink: 0
+        }
+
+        .app-job-header div strong {
+            font-size: .82rem;
+            display: block;
+            font-weight: 800;
+            color: var(--ink)
+        }
+
+        .app-job-header div small {
+            font-size: .66rem;
+            color: var(--muted);
+            font-weight: 600
+        }
+
+        .app-job-loc {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--muted);
+            font-size: .68rem;
+            font-weight: 600;
+            padding: 6px 0;
+            border-top: 1px dashed #edf0ec;
+            border-bottom: 1px dashed #edf0ec;
+            margin-bottom: 9px
+        }
+
+        .app-job-loc i {
+            color: #d93025;
+            font-size: .75rem
+        }
+
+        .app-job-actions {
+            display: flex;
+            gap: 6px
+        }
+
+        .app-job-actions button {
+            border: 0;
+            border-radius: 8px;
+            padding: 7px 10px;
+            font-size: .7rem;
+            font-weight: 700;
+            cursor: pointer;
+            flex: 1;
+            font-family: inherit
+        }
+
+        .job-accept {
+            background: var(--green);
+            color: #fff
+        }
+
+        .job-decline {
+            background: #f1f5f4;
+            color: var(--muted)
+        }
+
+        .app-secondary-title {
+            font-size: .66rem;
+            color: var(--muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            margin-top: 2px
+        }
+
+        .app-secondary {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 13px;
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            gap: 9px
+        }
+
+        .app-secondary i {
+            color: var(--green);
+            font-size: .85rem
+        }
+
+        .app-secondary span {
+            font-size: .76rem;
+            color: var(--ink);
+            font-weight: 600
+        }
+
+        .app-secondary small {
+            margin-left: auto;
+            font-size: .65rem;
+            color: var(--muted);
+            font-weight: 700
+        }
+
+        .app-nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 13px 0 6px;
+            border-top: 1px solid #e2e8f0;
+            margin-top: auto
+        }
+
+        .app-nav i {
+            font-size: 1.02rem;
+            color: #cbd5e1
+        }
+
+        .app-nav i.active {
+            color: var(--green)
+        }
+
+        /* TRUST BAR */
+        .trust-bar {
+            padding: 35px 0;
+            border-block: 1px solid var(--line);
+            background: #fff
+        }
+
+        .trust-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap
+        }
+
+        .trust-inner p {
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0
+        }
+
+        .trust-logos {
+            display: flex;
+            gap: 44px;
+            flex-wrap: wrap
+        }
+
+        .trust-logos span {
+            font-family: Manrope, sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #8a9b93;
+            letter-spacing: -.3px
+        }
+
+        /* SECTIONS */
+        .section-kicker {
+            display: block;
+            color: var(--green);
+            font-size: .75rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px
+        }
+
+        .section-head {
+            max-width: 680px;
+            margin-bottom: 42px
+        }
+
+        .section-head h2 {
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            line-height: 1.1;
+            font-weight: 800
+        }
+
+        .section-head p {
+            margin-top: 15px;
+            color: var(--muted);
+            font-size: 1.02rem;
+            max-width: 600px
+        }
+
+        /* BENEFITS */
+        .benefits {
+            padding: 80px 0 100px
+        }
+
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px
+        }
+
+        .benefit-card {
+            padding: 25px 22px 27px;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            transition: transform .2s, box-shadow .2s
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow)
+        }
+
+        .benefit-icon {
+            width: 49px;
+            height: 49px;
+            display: grid;
+            place-items: center;
+            background: var(--mint);
+            color: var(--green);
+            border-radius: 15px;
+            font-size: 1.18rem;
+            margin-bottom: 23px
+        }
+
+        .benefit-card h3 {
+            font-size: 1.08rem;
+            letter-spacing: -.45px;
+            margin-bottom: 9px
+        }
+
+        .benefit-card p {
+            font-size: .88rem;
+            color: var(--muted);
+            line-height: 1.75
+        }
+
+        /* HOW IT WORKS */
+        .how {
+            padding: 90px 0 98px;
+            background: #edf3ed;
+            border-block: 1px solid #e0e9e0
+        }
+
+        .how-layout {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 80px;
+            align-items: start
+        }
+
+        .how .section-head {
+            position: sticky;
+            top: 120px;
+            margin-bottom: 0
+        }
+
+        .how .section-head p {
+            max-width: 380px
+        }
+
+        .steps {
+            display: grid;
+            gap: 13px
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 52px 1fr;
+            gap: 19px;
+            padding: 24px;
+            background: #fff;
+            border: 1px solid #e1e9e1;
+            border-radius: 19px
+        }
+
+        .step-num {
+            width: 46px;
+            height: 46px;
+            display: grid;
+            place-items: center;
+            border-radius: 15px;
+            background: var(--green);
+            color: #fff;
+            font-family: Manrope, sans-serif;
+            font-weight: 800
+        }
+
+        .step h3 {
+            font-size: 1.12rem;
+            letter-spacing: -.5px;
+            margin: 2px 0 7px
+        }
+
+        .step p {
+            color: var(--muted);
+            font-size: .91rem;
+            line-height: 1.75
+        }
+
+        /* PAYOUT / EARNINGS SECTION */
+        .payout {
+            padding: 90px 0
+        }
+
+        .payout-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center
+        }
+
+        .payout-text h2 {
+            font-family: Manrope, sans-serif;
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -1.3px
+        }
+
+        .payout-text p {
+            margin: 17px 0 25px;
+            color: var(--muted);
+            font-size: 1.02rem;
+            max-width: 500px
+        }
+
+        .payout-list {
+            display: grid;
+            gap: 14px;
+            margin-top: 22px
+        }
+
+        .payout-item {
+            display: flex;
+            gap: 13px;
+            align-items: flex-start;
+            font-size: .93rem;
+            color: var(--ink);
+            font-weight: 500
+        }
+
+        .payout-item i {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            display: grid;
+            place-items: center;
+            background: var(--mint);
+            color: var(--green);
+            border-radius: 8px;
+            font-size: .78rem;
+            margin-top: 2px
+        }
+
+        .payout-visual {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: var(--shadow)
+        }
+
+        .payout-stat-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 22px
+        }
+
+        .payout-stat {
+            background: var(--paper);
+            border: 1px solid #e9eeea;
+            border-radius: 16px;
+            padding: 18px
+        }
+
+        .payout-stat small {
+            font-size: .68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 6px
+        }
+
+        .payout-stat strong {
+            font-family: Manrope, sans-serif;
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: var(--ink);
+            letter-spacing: -.5px;
+            display: block;
+            line-height: 1.1
+        }
+
+        .payout-stat span {
+            font-size: .72rem;
+            color: var(--green);
+            font-weight: 700;
+            margin-top: 4px;
+            display: inline-block
+        }
+
+        .payout-chart {
+            height: 120px;
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            padding-top: 10px
+        }
+
+        .payout-chart .bar {
+            flex: 1;
+            background: #dbe9df;
+            border-radius: 6px 6px 3px 3px;
+            position: relative;
+            transition: background .2s
+        }
+
+        .payout-chart .bar:hover {
+            background: #bfdccc
+        }
+
+        .payout-chart .bar.highlight {
+            background: var(--green)
+        }
+
+        .payout-chart .bar span {
+            position: absolute;
+            bottom: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: .62rem;
+            color: var(--muted);
+            font-weight: 700;
+            white-space: nowrap
+        }
+
+        .payout-chart-wrap {
+            padding-bottom: 26px
+        }
+
+        /* DEMO */
+        .demo {
+            padding: 94px 0 100px;
+            background: #11251f;
+            color: #fff;
+            position: relative;
+            overflow: hidden
+        }
+
+        .demo:before {
+            content: "";
+            position: absolute;
+            width: 560px;
+            height: 560px;
+            border: 1px solid #ffffff12;
+            border-radius: 50%;
+            right: -190px;
+            top: -250px;
+            box-shadow: 0 0 0 60px #ffffff05, 0 0 0 120px #ffffff03
+        }
+
+        .demo-inner {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center
+        }
+
+        .demo-copy .section-kicker {
+            color: #9bd5b1
+        }
+
+        .demo-copy h2 {
+            font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+            line-height: 1.07
+        }
+
+        .demo-copy>p {
+            margin: 19px 0 27px;
+            max-width: 460px;
+            color: #b7c7bf;
+            line-height: 1.85
+        }
+
+        .demo-points {
+            display: grid;
+            gap: 14px;
+            margin-top: 30px
+        }
+
+        .demo-point {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            color: #e1eae4;
+            font-size: .9rem
+        }
+
+        .demo-point i {
+            width: 28px;
+            height: 28px;
+            display: grid;
+            place-items: center;
+            background: #254438;
+            border-radius: 9px;
+            color: #9bd5b1
+        }
+
+        .demo-hint {
+            margin-top: 24px;
+            color: #9cb1a6;
+            font-size: .78rem
+        }
+
+        /* WHATSAPP PHONE */
+        .phone-stage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 17px;
+            min-width: 0
+        }
+
+        .phone {
+            position: relative;
+            width: min(100%, 360px);
+            height: 690px;
+            flex-shrink: 0;
+            overflow: hidden;
+            border: 7px solid #2a3331;
+            border-radius: 40px;
+            background: #0a0a0a;
+            box-shadow: 0 35px 90px #0006, 0 0 0 1px #ffffff20
+        }
+
+        .screen {
+            height: 100%;
+            border-radius: 32px;
+            overflow: hidden;
+            background: #e9e4dc;
+            display: flex;
+            flex-direction: column;
+            position: relative
+        }
+
+        .island {
+            position: absolute;
+            z-index: 10;
+            top: 7px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 76px;
+            height: 18px;
+            border-radius: 20px;
+            background: #111719
+        }
+
+        .statusbar {
+            height: 31px;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 20px 0;
+            background: #075e54;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700
+        }
+
+        .status-icons {
+            display: flex;
+            gap: 6px;
+            align-items: center
+        }
+
+        .battery {
+            width: 17px;
+            height: 9px;
+            border: 1.3px solid #fff;
+            border-radius: 3px;
+            position: relative;
+            padding: 1px
+        }
+
+        .battery:before {
+            content: "";
+            display: block;
+            height: 100%;
+            width: 72%;
+            background: #fff;
+            border-radius: 1px
+        }
+
+        .battery:after {
+            content: "";
+            position: absolute;
+            right: -3px;
+            top: 2px;
+            width: 2px;
+            height: 4px;
+            background: #fff
+        }
+
+        .wa-header {
+            min-height: 62px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 9px 10px;
+            background: #075e54;
+            color: #fff;
+            box-shadow: 0 2px 5px #0002;
+            z-index: 2
+        }
+
+        .back {
+            font-size: 15px;
+            padding: 5px 2px;
+            color: #ffffffeb
+        }
+
+        .wa-avatar {
+            width: 39px;
+            height: 39px;
+            display: grid;
+            flex-shrink: 0;
+            place-items: center;
+            border: 2px solid #ffffff99;
+            border-radius: 50%;
+            background: #f0fff7;
+            color: #075e54;
+            font-size: 17px
+        }
+
+        .contact {
+            min-width: 0;
+            flex: 1
+        }
+
+        .contact-name {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            font-weight: 700
+        }
+
+        .verified {
+            display: grid;
+            place-items: center;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #fff;
+            color: #36a5f5;
+            font-size: 7px
+        }
+
+        .contact-status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 3px;
+            color: #c5e5dc;
+            font-size: 9px
+        }
+
+        .online-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #6ee7a0
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 11px;
+            align-items: center;
+            font-size: 13px;
+            color: #ffffffed
+        }
+
+        .chat {
+            position: relative;
+            isolation: isolate;
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            padding: 13px 9px 17px;
+            scrollbar-width: none;
+            background-color: #e9e4dc;
+            background-image: radial-gradient(circle at 15px 15px, #69726614 1px, transparent 1.5px), radial-gradient(circle at 45px 45px, #6972660f 1px, #e9e4dc 1.5px);
+            background-size: 30px 30px
+        }
+
+        .chat::-webkit-scrollbar {
+            display: none
+        }
+
+        .date-pill {
+            align-self: center;
+            padding: 6px 11px;
+            margin: 0 0 2px;
+            border-radius: 8px;
+            background: #fff;
+            color: #63716c;
+            box-shadow: 0 1px 2px #0001;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: .6px
+        }
+
+        .notice {
+            align-self: center;
+            max-width: 90%;
+            text-align: center;
+            background: #fdf3c8;
+            color: #54492a;
+            font-size: 8px;
+            line-height: 1.4;
+            padding: 6px 8px;
+            border-radius: 8px;
+            margin-bottom: 2px
+        }
+
+        .message {
+            position: relative;
+            max-width: 91%;
+            padding: 8px 9px 6px;
+            border-radius: 9px;
+            color: #263632;
+            font-size: 10px;
+            line-height: 1.55;
+            overflow-wrap: anywhere;
+            box-shadow: 0 1px 1px #0000000f;
+            animation: appear .3s ease both
+        }
+
+        .received {
+            align-self: flex-start;
+            border-top-left-radius: 3px;
+            background: #fff
+        }
+
+        .sent {
+            align-self: flex-end;
+            border-top-right-radius: 3px;
+            background: #d9fdd3
+        }
+
+        .meta {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 4px;
+            margin-top: 4px;
+            color: #81908a;
+            font-size: 8px;
+            line-height: 1
+        }
+
+        .ticks {
+            color: #39a9e8;
+            font-size: 9px
+        }
+
+        .message strong {
+            color: #203d35;
+            font-weight: 800
+        }
+
+        .accent {
+            color: #075e54;
+            font-weight: 700
+        }
+
+        .message p+p {
+            margin-top: 6px
+        }
+
+        .options {
+            display: grid;
+            gap: 5px;
+            margin-top: 8px
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px;
+            border: 1px solid #e5eeea;
+            border-radius: 7px;
+            background: #f8fbf9;
+            color: #075e54;
+            font-size: 9px;
+            font-weight: 700
+        }
+
+        .option-number {
+            width: 19px;
+            height: 19px;
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            border-radius: 6px;
+            background: #e3f4e9;
+            font-size: 9px
+        }
+
+        .address {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            background: #f6f8f9;
+            border-radius: 7px;
+            padding: 7px;
+            margin-top: 7px;
+            border: 1px solid #e6ece9
+        }
+
+        .address i {
+            color: #d93025;
+            font-size: 15px
+        }
+
+        .address b {
+            display: block;
+            font-size: 10px
+        }
+
+        .address span {
+            font-size: 8px;
+            color: #71817f
+        }
+
+        .ticket {
+            margin-top: 8px;
+            padding: 10px;
+            border: 1px solid #d7eee1;
+            border-radius: 9px;
+            background: #f3fbf6
+        }
+
+        .ticket-top {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .ticket-check {
+            display: grid;
+            width: 27px;
+            height: 27px;
+            flex-shrink: 0;
+            place-items: center;
+            border-radius: 8px;
+            background: #d7f3e1;
+            color: #16834d;
+            font-size: 11px
+        }
+
+        .ticket-label {
+            color: #6d8a7b;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-transform: uppercase
+        }
+
+        .ticket-number {
+            margin-top: 2px;
+            color: #164e37;
+            font-size: 13px;
+            font-weight: 800
+        }
+
+        .ticket-divider {
+            height: 1px;
+            margin: 9px 0;
+            background: #dceee3
+        }
+
+        .ticket-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 7px
+        }
+
+        .ticket-bottom small {
+            color: #668071;
+            font-size: 8px
+        }
+
+        .status-tag {
+            padding: 4px 6px;
+            border-radius: 20px;
+            background: #d9f5e4;
+            color: #187546;
+            font-size: 8px;
+            font-weight: 800;
+            white-space: nowrap
+        }
+
+        .assignment {
+            margin-top: 8px;
+            overflow: hidden;
+            border: 1px solid #e5ece8;
+            border-radius: 9px;
+            background: #fff
+        }
+
+        .assignment-banner {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px;
+            background: #e8f7ed;
+            color: #187546;
+            font-size: 8px;
+            font-weight: 800
+        }
+
+        .assignment-body {
+            padding: 9px
+        }
+
+        .plumber {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .plumber-avatar {
+            display: grid;
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            place-items: center;
+            border-radius: 50%;
+            background: #e9f1ed;
+            color: #466c5a;
+            font-size: 15px
+        }
+
+        .plumber-info {
+            flex: 1;
+            min-width: 0
+        }
+
+        .plumber-name {
+            color: #213b31;
+            font-size: 10px;
+            font-weight: 800
+        }
+
+        .plumber-role {
+            margin-top: 2px;
+            color: #82918a;
+            font-size: 8px
+        }
+
+        .rating {
+            color: #bd8112;
+            font-size: 9px;
+            font-weight: 800;
+            white-space: nowrap
+        }
+
+        .eta-panel {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-top: 10px;
+            padding: 8px;
+            border-radius: 7px;
+            background: #f2f7f4
+        }
+
+        .eta-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #63786c;
+            font-size: 8px
+        }
+
+        .eta-label i {
+            color: #218451;
+            font-size: 12px
+        }
+
+        .eta-value {
+            color: #16683d;
+            font-size: 11px;
+            font-weight: 800
+        }
+
+        .track {
+            display: flex;
+            align-items: center;
+            margin: 10px 4px 4px
+        }
+
+        .track i {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #cfd8dc;
+            flex: none
+        }
+
+        .track i.on {
+            background: #075e54
+        }
+
+        .track i.now {
+            background: #f0a030;
+            box-shadow: 0 0 0 3px #f0a0302e
+        }
+
+        .track u {
+            flex: 1;
+            height: 2px;
+            background: #cfd8dc;
+            text-decoration: none
+        }
+
+        .track u.on {
+            background: #075e54
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            font-size: 7px;
+            color: #71817f
+        }
+
+        .arrival-note {
+            margin-top: 7px;
+            color: #61746a;
+            font-size: 9px;
+            line-height: 1.5
+        }
+
+        .typing {
+            background: #fff;
+            align-self: flex-start;
+            border-radius: 9px;
+            border-top-left-radius: 3px;
+            padding: 9px 11px;
+            display: flex;
+            gap: 4px;
+            box-shadow: 0 1px 1px #0001;
+            animation: appear .2s both
+        }
+
+        .typing i {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #9aa8b0;
+            animation: blink 1s infinite
+        }
+
+        .typing i:nth-child(2) {
+            animation-delay: .15s
+        }
+
+        .typing i:nth-child(3) {
+            animation-delay: .3s
+        }
+
+        .composer {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 9px 16px;
+            background: #f4f0e9;
+            z-index: 2
+        }
+
+        .composer-icon {
+            flex-shrink: 0;
+            color: #61736e;
+            font-size: 16px
+        }
+
+        .input {
+            min-width: 0;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 10px 9px;
+            border-radius: 24px;
+            background: #fff;
+            color: #8c9b96
+        }
+
+        .input i {
+            font-size: 13px
+        }
+
+        .input span {
+            flex: 1;
+            font-size: 10px
+        }
+
+        .send {
+            display: grid;
+            width: 37px;
+            height: 37px;
+            flex-shrink: 0;
+            place-items: center;
+            border-radius: 50%;
+            background: #075e54;
+            color: #fff;
+            font-size: 14px
+        }
+
+        .home-indicator {
+            position: absolute;
+            bottom: 3px;
+            left: 50%;
+            z-index: 12;
+            width: 88px;
+            height: 3px;
+            transform: translateX(-50%);
+            border-radius: 10px;
+            background: #14201ccc
+        }
+
+        .replay {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 19px;
+            border: 1px solid #4b7563;
+            border-radius: 999px;
+            background: #204b3b;
+            color: #fff;
+            font-size: .84rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background .2s, transform .2s
+        }
+
+        .replay:hover {
+            background: #2b614c;
+            transform: translateY(-1px)
+        }
+
+        .replay:focus-visible {
+            outline: 3px solid #9bd5b1;
+            outline-offset: 3px
+        }
+
+        /* CTA BAND */
+        .cta-band {
+            padding: 100px 100px;
+        }
+
+        .cta-panel {
+            background: var(--green);
+            color: #fff;
+            border-radius: 28px;
+            padding: 56px 62px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+            position: relative;
+            overflow: hidden
+        }
+
+        .cta-panel:before {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            right: -120px;
+            top: -140px;
+            background: #ffffff0a
+        }
+
+        .cta-panel h2 {
+            font-family: Manrope, sans-serif;
+            font-size: clamp(2rem, 3.4vw, 2.8rem);
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -1.3px;
+            max-width: 520px
+        }
+
+        .cta-panel p {
+            color: #c4e2d1;
+            margin-top: 12px;
+            max-width: 480px;
+            font-size: 1rem
+        }
+
+        .cta-panel .btn-white {
+            background: #fff;
+            color: var(--green);
+            padding: 15px 26px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: .95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            transition: transform .2s, box-shadow .2s
+        }
+
+        .cta-panel .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px #0003
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 45px 0 25px;
+            background: #fff;
+            border-top: 1px solid var(--line)
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+            padding-bottom: 32px
+        }
+
+        .footer-brand p {
+            max-width: 340px;
+            color: var(--muted);
+            font-size: .88rem;
+            margin-top: 12px
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            color: #53645d;
+            font-size: .87rem;
+            font-weight: 600
+        }
+
+        .footer-links a:hover {
+            color: var(--green)
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            border-top: 1px solid #edf0ec;
+            padding-top: 20px;
+            color: #7b8983;
+            font-size: .78rem
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(5px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @keyframes blink {
+
+            0%,
+            60%,
+            100% {
+                opacity: .35;
+                transform: none
+            }
+
+            30% {
+                opacity: 1;
+                transform: translateY(-3px)
+            }
+        }
+
+        @media(max-width:980px) {
+            .hero {
+                grid-template-columns: 1fr 1fr;
+                gap: 25px;
+                padding-top: 58px
+            }
+
+            .hero-visual {
+                min-height: 470px
+            }
+
+            .app-mockup {
+                width: 285px
+            }
+
+            .app-screen {
+                height: 445px
+            }
+
+            .float-stat.top-right {
+                right: -5px
+            }
+
+            .float-stat.bottom-left {
+                left: -6px
+            }
+
+            .floating-badge {
+                left: 0
+            }
+
+            .benefit-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .how-layout {
+                gap: 35px
+            }
+
+            .demo-inner {
+                gap: 36px
+            }
+
+            .payout-grid {
+                gap: 40px
+            }
+
+            .cta-panel {
+                padding: 44px
+            }
+
+            .nav-links {
+                gap: 18px
+            }
+        }
+
+        @media(max-width:760px) {
+            .wrap {
+                width: min(100% - 34px, 560px)
+            }
+
+            .nav-inner {
+                height: 69px
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 68px;
+                left: 17px;
+                right: 17px;
+                padding: 18px;
+                background: #fff;
+                border: 1px solid var(--line);
+                border-radius: 16px;
+                box-shadow: var(--shadow);
+                flex-direction: column;
+                align-items: stretch;
+                gap: 14px
+            }
+
+            .nav-links.open {
+                display: flex
+            }
+
+            .menu-toggle {
+                display: grid;
+                place-items: center
+            }
+
+            .nav-actions {
+                display: flex;
+                gap: 10px
+            }
+
+            .nav-cta {
+                padding: 11px 14px;
+                font-size: .8rem
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 58px 0 65px;
+                gap: 24px
+            }
+
+            .hero-copy {
+                text-align: center
+            }
+
+            .eyebrow {
+                margin-bottom: 19px
+            }
+
+            .hero-copy>p {
+                margin: 20px auto 25px;
+                font-size: 1rem
+            }
+
+            .hero-actions,
+            .hero-notes {
+                justify-content: center
+            }
+
+            .hero-visual {
+                min-height: 480px;
+                width: min(100%, 500px);
+                margin-inline: auto
+            }
+
+            .app-mockup {
+                width: 295px
+            }
+
+            .app-screen {
+                height: 455px
+            }
+
+            .floating-badge {
+                top: 20px;
+                left: 0
+            }
+
+            .float-stat.top-right {
+                top: 70px;
+                right: -1px
+            }
+
+            .float-stat.bottom-left {
+                bottom: 23px;
+                left: 0
+            }
+
+            .trust-inner {
+                flex-direction: column;
+                text-align: center
+            }
+
+            .benefits,
+            .payout {
+                padding: 68px 0
+            }
+
+            .section-head {
+                margin-bottom: 30px
+            }
+
+            .how {
+                padding: 68px 0
+            }
+
+            .how-layout {
+                grid-template-columns: 1fr;
+                gap: 30px
+            }
+
+            .how .section-head {
+                position: static
+            }
+
+            .payout-grid {
+                grid-template-columns: 1fr;
+                gap: 30px
+            }
+
+            .demo {
+                padding: 68px 0
+            }
+
+            .demo-inner {
+                grid-template-columns: 1fr;
+                gap: 35px
+            }
+
+            .demo-copy {
+                text-align: center
+            }
+
+            .demo-copy>p {
+                margin-inline: auto
+            }
+
+            .demo-points {
+                max-width: 380px;
+                margin-inline: auto;
+                text-align: left
+            }
+
+            .phone {
+                height: 650px;
+                width: min(100%, 350px)
+            }
+
+            .cta-band {
+                padding-bottom: 70px
+            }
+
+            .cta-panel {
+                padding: 36px 28px;
+                flex-direction: column;
+                align-items: flex-start
+            }
+
+            .footer-top {
+                display: block
+            }
+
+            .footer-links {
+                margin-top: 25px;
+                gap: 14px 20px
+            }
+        }
+
+        @media(max-width:460px) {
+            .wrap {
+                width: calc(100% - 30px)
+            }
+
+            h1 {
+                font-size: 3.25rem
+            }
+
+            .hero-actions {
+                flex-direction: column
+            }
+
+            .hero-actions .btn {
+                width: 100%
+            }
+
+            .hero-notes {
+                gap: 10px 14px;
+                font-size: .76rem
+            }
+
+            .hero-visual {
+                min-height: 420px
+            }
+
+            .app-mockup {
+                width: 255px;
+                padding: 9px;
+                border-radius: 34px
+            }
+
+            .app-screen {
+                height: 400px;
+                border-radius: 25px
+            }
+
+            .app-content {
+                padding: 13px
+            }
+
+            .app-earnings {
+                padding: 13px
+            }
+
+            .app-earnings strong {
+                font-size: 1.3rem
+            }
+
+            .floating-badge {
+                font-size: .75rem;
+                padding: 10px 12px;
+                top: 12px
+            }
+
+            .float-stat {
+                padding: 9px;
+                gap: 7px
+            }
+
+            .float-stat>i {
+                width: 30px;
+                height: 30px;
+                font-size: .85rem
+            }
+
+            .float-stat div strong {
+                font-size: .82rem
+            }
+
+            .float-stat div span {
+                font-size: .55rem
+            }
+
+            .float-stat.top-right {
+                top: 58px;
+                right: -2px
+            }
+
+            .float-stat.bottom-left {
+                bottom: 12px;
+                left: -2px
+            }
+
+            .benefit-grid {
+                gap: 10px
+            }
+
+            .benefit-card {
+                padding: 18px 15px
+            }
+
+            .benefit-icon {
+                width: 42px;
+                height: 42px;
+                margin-bottom: 16px
+            }
+
+            .benefit-card h3 {
+                font-size: .97rem
+            }
+
+            .benefit-card p {
+                font-size: .82rem
+            }
+
+            .step {
+                padding: 18px 15px;
+                grid-template-columns: 42px 1fr;
+                gap: 13px
+            }
+
+            .step-num {
+                width: 40px;
+                height: 40px;
+                border-radius: 12px
+            }
+
+            .phone {
+                height: min(640px, 78dvh);
+                min-height: 550px;
+                border-width: 5px;
+                border-radius: 32px
+            }
+
+            .screen {
+                border-radius: 25px
+            }
+
+            .message {
+                max-width: 94%
+            }
+
+            .cta-panel {
+                padding: 28px 20px
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 8px
+            }
+
+            .brand {
+                font-size: 1.1rem
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important
+            }
+
+            .typing i {
+                animation: none
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topline"></div>
+
+    <nav>
+        <div class="wrap nav-inner">
+            <a class="brand" href="#home" aria-label="Care Bridge for providers">
+                <span class="brand-mark"><i class="fa-solid fa-bridge"></i></span>Care Bridge <span
+                    style="color:var(--muted);font-weight:600;margin-left:6px;font-size:.9rem;">for pros</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#benefits">Why Care Bridge</a>
+                <a href="#how">How it works</a>
+                <a href="#demo">Job alerts</a>
+                <a href="#payout">Earnings</a>
+            </div>
+            <div class="nav-actions">
+                <a class="nav-cta" href="#demo">Apply as a pro <i class="fa-solid fa-arrow-right"></i></a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false"><i
+                        class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="wrap hero" id="home">
+            <div class="hero-copy">
+                <div class="eyebrow"><i class="fa-solid fa-briefcase"></i> For service professionals</div>
+                <h1>Steady work.<br><em>Clear jobs.</em></h1>
+                <p>Care Bridge brings local service requests to your phone — with the right details up front, a simple
+                    way to accept, and steady visibility on what's coming next.</p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#demo">See a job alert <i class="fa-solid fa-arrow-right"></i></a>
+                    <a class="btn btn-secondary" href="#how">How it works</a>
+                </div>
+                <div class="hero-notes">
+                    <span><i class="fa-solid fa-check-circle"></i> Verified requests</span>
+                    <span><i class="fa-solid fa-bell"></i> Instant job alerts</span>
+                    <span><i class="fa-solid fa-chart-line"></i> Grow your business</span>
+                </div>
+            </div>
+
+            <div class="hero-visual" aria-label="Provider dashboard app preview">
+                <div class="floating-badge"><i class="fa-solid fa-star"></i> Top rated pros</div>
+                <div class="float-stat top-right"><i class="fa-solid fa-coins"></i>
+                    <div><strong>$1,240</strong><span>This week</span></div>
+                </div>
+                <div class="float-stat bottom-left"><i class="fa-solid fa-star"></i>
+                    <div><strong>4.9 ★</strong><span>Avg. rating</span></div>
+                </div>
+
+                <div class="app-mockup">
+                    <div class="app-screen">
+                        <div class="app-content">
+
+                            <!-- Top bar -->
+                            <div class="app-topbar">
+                                <div class="app-topbar-left">
+                                    <small>Welcome back</small>
+                                    <strong>Mike R.</strong>
+                                </div>
+                                <img class="app-topbar-avatar"
+                                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
+                                    alt="Provider avatar">
+                            </div>
+
+                            <!-- Earnings -->
+                            <div class="app-earnings">
+                                <small>This week's earnings</small>
+                                <strong>$1,240.00</strong>
+                                <span class="trend"><i class="fa-solid fa-arrow-up"></i> 18% vs last week</span>
+                            </div>
+
+                            <!-- New job -->
+                            <div class="app-job">
+                                <div class="app-job-header">
+                                    <div class="app-job-icon"><i class="fa-solid fa-faucet-drip"></i></div>
+                                    <div>
+                                        <strong>Kitchen tap leak</strong>
+                                        <small>Plumbing · 12 Oak Ave.</small>
+                                    </div>
+                                </div>
+                                <div class="app-job-loc">
+                                    <i class="fa-solid fa-location-dot"></i> 2.4 km away · ETA 20 min
+                                </div>
+                                <div class="app-job-actions">
+                                    <button class="job-accept">Accept</button>
+                                    <button class="job-decline">Decline</button>
+                                </div>
+                            </div>
+
+                            <!-- Upcoming -->
+                            <div class="app-secondary-title">Upcoming today</div>
+                            <div class="app-secondary">
+                                <i class="fa-solid fa-broom"></i>
+                                <span>Deep clean · 4 Oak Ave.</span>
+                                <small>2:30 PM</small>
+                            </div>
+                            <div class="app-secondary">
+                                <i class="fa-solid fa-leaf"></i>
+                                <span>Lawn care · 8 Elm St.</span>
+                                <small>4:15 PM</small>
+                            </div>
+
+                            <!-- Bottom nav -->
+                            <div class="app-nav">
+                                <i class="fa-solid fa-house"></i>
+                                <i class="fa-solid fa-briefcase active"></i>
+                                <i class="fa-solid fa-wallet"></i>
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRUST BAR -->
+        <div class="trust-bar">
+            <div class="wrap trust-inner">
+                <p>Trusted by service professionals across the network</p>
+                <div class="trust-logos">
+                    <span>Plumbers Guild</span>
+                    <span>HomeCare Co.</span>
+                    <span>UrbanClean</span>
+                    <span>GreenWorks</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- BENEFITS -->
+        <section class="benefits" id="benefits">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-kicker">Why professionals choose Care Bridge</span>
+                    <h2>Fewer surprises.<br>More done.</h2>
+                    <p>We built Care Bridge for the people doing the work — so you spend less time chasing details and
+                        more time on the job.</p>
+                </div>
+                <div class="benefit-grid">
+                    <article class="benefit-card">
+                        <div class="benefit-icon"><i class="fa-solid fa-bell"></i></div>
+                        <h3>Instant job alerts</h3>
+                        <p>New requests land on WhatsApp or SMS with the customer, address, and job scope.</p>
+                    </article>
+                    <article class="benefit-card">
+                        <div class="benefit-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>Verified customers</h3>
+                        <p>Requests come with confirmed details, so you know who you're showing up for.</p>
+                    </article>
+                    <article class="benefit-card">
+                        <div class="benefit-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <h3>Efficiency tracked</h3>
+                        <p>Start and finish timestamps feed your record — good work gets recognised.</p>
+                    </article>
+                    <article class="benefit-card">
+                        <div class="benefit-icon"><i class="fa-solid fa-wallet"></i></div>
+                        <h3>Clear earnings</h3>
+                        <p>See what you've earned, what's pending, and where the week is heading.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section class="how" id="how">
+            <div class="wrap how-layout">
+                <div class="section-head">
+                    <span class="section-kicker">A calmer way to work</span>
+                    <h2>From job alert to job done.</h2>
+                    <p>Simple steps keep the work clear and the hand-offs clean — from your first notification to your
+                        final update.</p>
+                    <a class="btn btn-primary" style="margin-top:24px" href="#demo">Watch the alert demo <i
+                            class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="steps">
+                    <article class="step">
+                        <div class="step-num">01</div>
+                        <div>
+                            <h3>Get a job alert</h3>
+                            <p>A new request arrives with the customer's details, address, and job scope — no
+                                back-and-forth needed.</p>
+                        </div>
+                    </article>
+                    <article class="step">
+                        <div class="step-num">02</div>
+                        <div>
+                            <h3>Accept & go</h3>
+                            <p>Review the job, accept it, and head out. Arrival is logged so the customer knows when
+                                you're close.</p>
+                        </div>
+                    </article>
+                    <article class="step">
+                        <div class="step-num">03</div>
+                        <div>
+                            <h3>Finish & get recognised</h3>
+                            <p>Complete the job with a timestamp. Your efficiency and ratings are tracked — the best
+                                work rises.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAYOUT SECTION -->
+        <section class="payout" id="payout">
+            <div class="wrap payout-grid">
+                <div class="payout-text">
+                    <span class="section-kicker">Built for steady income</span>
+                    <h2>See your work,<br>in numbers.</h2>
+                    <p>A clean view of your week: what you've earned, what's coming next, and how your efficiency is
+                        trending — so you can plan with confidence.</p>
+                    <div class="payout-list">
+                        <div class="payout-item"><i class="fa-solid fa-check"></i><span>Track accepted, in-progress, and
+                                completed jobs in one place</span></div>
+                        <div class="payout-item"><i class="fa-solid fa-check"></i><span>Weekly earnings summary with
+                                clear trend visibility</span></div>
+                        <div class="payout-item"><i class="fa-solid fa-check"></i><span>Efficiency based on real start
+                                and finish timestamps</span></div>
+                    </div>
+                </div>
+                <div class="payout-visual">
+                    <div class="payout-stat-row">
+                        <div class="payout-stat">
+                            <small>This week</small>
+                            <strong>$1,240</strong>
+                            <span><i class="fa-solid fa-arrow-up"></i> 18% vs last week</span>
+                        </div>
+                        <div class="payout-stat">
+                            <small>Completed jobs</small>
+                            <strong>14</strong>
+                            <span><i class="fa-solid fa-check"></i> 100% on time</span>
+                        </div>
+                    </div>
+                    <div class="payout-chart-wrap">
+                        <div class="payout-chart">
+                            <div class="bar" style="height:45%"><span>Mon</span></div>
+                            <div class="bar" style="height:65%"><span>Tue</span></div>
+                            <div class="bar" style="height:52%"><span>Wed</span></div>
+                            <div class="bar highlight" style="height:88%"><span>Thu</span></div>
+                            <div class="bar" style="height:70%"><span>Fri</span></div>
+                            <div class="bar" style="height:40%"><span>Sat</span></div>
+                            <div class="bar" style="height:22%"><span>Sun</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEMO -->
+        <section class="demo" id="demo">
+            <div class="wrap demo-inner">
+                <div class="demo-copy">
+                    <span class="section-kicker">The professional experience</span>
+                    <h2>One alert.<br>A clear next step.</h2>
+                    <p>See how a simple WhatsApp job alert looks — with the customer details, job scope, and a one-tap
+                        way to accept.</p>
+                    <div class="demo-points">
+                        <div class="demo-point"><i class="fa-solid fa-check"></i><span>Customer, address, and job scope
+                                in one message</span></div>
+                        <div class="demo-point"><i class="fa-solid fa-check"></i><span>Accept or decline without leaving
+                                the chat</span></div>
+                        <div class="demo-point"><i class="fa-solid fa-check"></i><span>Arrival and completion updates
+                                stay in one thread</span></div>
+                    </div>
+                    <p class="demo-hint">Illustrative concept demo · The messages and provider details are example
+                        content, not a live service connection.</p>
+                </div>
+
+                <div class="phone-stage">
+                    <div class="phone" aria-label="Animated Care Bridge provider WhatsApp alert">
+                        <div class="screen">
+                            <div class="island"></div>
+                            <div class="statusbar">
+                                <span>10:14</span>
+                                <div class="status-icons"><i class="fa-solid fa-signal"></i><i
+                                        class="fa-solid fa-wifi"></i><span class="battery"></span></div>
+                            </div>
+                            <header class="wa-header">
+                                <i class="fa-solid fa-arrow-left back"></i>
+                                <div class="wa-avatar"><i class="fa-solid fa-briefcase"></i></div>
+                                <div class="contact">
+                                    <div class="contact-name">Care Bridge Jobs <span class="verified"><i
+                                                class="fa-solid fa-check"></i></span></div>
+                                    <div class="contact-status"><span class="online-dot"></span> online</div>
+                                </div>
+                                <div class="header-actions"><i class="fa-solid fa-video"></i><i
+                                        class="fa-solid fa-phone"></i><i class="fa-solid fa-ellipsis-vertical"></i>
+                                </div>
+                            </header>
+                            <section class="chat" id="chat" aria-label="Provider WhatsApp conversation"
+                                aria-live="polite"></section>
+                            <div class="composer">
+                                <i class="fa-regular fa-face-smile composer-icon"></i>
+                                <div class="input"><span>Message</span><i class="fa-solid fa-paperclip"></i><i
+                                        class="fa-solid fa-camera"></i></div>
+                                <div class="send"><i class="fa-solid fa-microphone"></i></div>
+                            </div>
+                            <div class="home-indicator"></div>
+                        </div>
+                    </div>
+                    <button class="replay" id="replay" type="button"><i class="fa-solid fa-rotate-left"></i> Replay
+                        alert</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA BAND -->
+        <section class="cta-band">
+            <div class="wrap">
+                <div class="cta-panel">
+                    <div>
+                        <h2>Ready to take the next job?</h2>
+                        <p>Join the Care Bridge network and get clear, verified service requests delivered to your
+                            phone.</p>
+                    </div>
+                    <a class="btn-white" href="#demo">Apply as a professional <i
+                            class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a class="brand" href="#home"><span class="brand-mark"><i class="fa-solid fa-bridge"></i></span>Care
+                        Bridge</a>
+                    <p>Connecting households with the help they need — and helping professionals grow with steady, clear
+                        work.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#benefits">Why Care Bridge</a>
+                    <a href="#how">How it works</a>
+                    <a href="#demo">Job alerts</a>
+                    <a href="#payout">Earnings</a>
+                    <a href="#home">Sign in</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© <span id="year"></span> Care Bridge. All rights reserved.</span>
+                <span>Built for the people doing the work.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chat = document.getElementById('chat');
+        const replay = document.getElementById('replay');
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const wait = ms => new Promise(resolve => setTimeout(resolve, reduceMotion ? 0 : ms));
+        let runId = 0;
+
+        const stamp = (time, sent = false) =>
+            `<div class="meta">${time}${sent ? ' <i class="fa-solid fa-check-double ticks"></i>' : ''}</div>`;
+
+        /* Provider-focused conversation */
+        const conversation = [
+            { time: '10:14 AM', html: `<p>🔔 <strong>New job nearby</strong></p><p>A new plumbing request just came in. Here are the details:</p><div class="ticket"><div class="ticket-top"><div class="ticket-check"><i class="fa-solid fa-faucet-drip"></i></div><div><div class="ticket-label">Ticket #4821</div><div class="ticket-number">Kitchen tap leak</div></div></div><div class="ticket-divider"></div><div class="ticket-bottom"><small>Plumbing · Standard</small><span class="status-tag">2.4 km away</span></div></div><div class="address"><i class="fa-solid fa-location-dot"></i><div><b>12 Oak Avenue, Apartment 3B</b><span>Customer address · confirmed</span></div></div><p style="margin-top:7px">Job scope: leaking kitchen tap, slow drip. Customer is home now.</p><div class="options"><div class="option"><span class="option-number">1</span>Accept job</div><div class="option"><span class="option-number">2</span>Decline</div></div>` },
+            { sent: true, time: '10:15 AM', html: `<p>1 — Accept job</p>` },
+            { typing: 900 },
+            { time: '10:15 AM', html: `<p>✅ <strong>Job accepted.</strong></p><p>The customer has been notified that you're on the way. Your arrival will be logged automatically.</p><div class="eta-panel"><div class="eta-label"><i class="fa-solid fa-car-side"></i><span>Estimated arrival</span></div><div class="eta-value">20 min</div></div><div class="track"><i class="on"></i><u class="on"></u><i class="now"></i><u></u><i></i></div><div class="steps"><span>Accepted</span><span>On the way</span><span>Arrived</span></div>` },
+            { typing: 1000 },
+            { time: '10:16 AM', html: `<p>💡 <strong>Quick tip</strong></p><p>The customer mentioned the tap was making a slight hissing sound. If you need any extra parts, just reply here and we'll log it to the ticket.</p>` },
+            { sent: true, time: '10:36 AM', html: `<p>I'm here at the address.</p>` },
+            { typing: 800 },
+            { time: '10:36 AM', html: `<p>📍 <strong>Arrival logged</strong> at 10:36 AM.</p><p>Let us know when the job is complete so we can update the customer and close the ticket.</p>` },
+            { sent: true, time: '11:04 AM', html: `<p>All done. Replaced the washer.</p>` },
+            { typing: 1000 },
+            { time: '11:04 AM', html: `<p>🌟 <strong>Job complete</strong></p><div class="ticket"><div class="ticket-top"><div class="ticket-check"><i class="fa-solid fa-check"></i></div><div><div class="ticket-label">Ticket closed</div><div class="ticket-number">#4821</div></div></div><div class="ticket-divider"></div><div class="ticket-bottom"><small>Start 10:36 · Finish 11:04</small><span class="status-tag">28 min</span></div></div><p style="margin-top:7px">Your efficiency has been logged. Payment will be processed at the end of the week. Thanks for the great work, Mike!</p>` }
+        ];
+
+        function scrollToLatest() {
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        function addMessage(item) {
+            const message = document.createElement('div');
+            message.className = `message ${item.sent ? 'sent' : 'received'}`;
+            message.innerHTML = item.html + stamp(item.time, item.sent);
+            chat.appendChild(message);
+            scrollToLatest();
+        }
+
+        async function playConversation() {
+            const thisRun = ++runId;
+            chat.innerHTML = '<div class="date-pill">TODAY</div><div class="notice"><i class="fa-solid fa-lock"></i> Messages are secured with end-to-end encryption.</div>';
+
+            for (const item of conversation) {
+                if (thisRun !== runId) return;
+                if (item.typing) {
+                    const typing = document.createElement('div');
+                    typing.className = 'typing';
+                    typing.setAttribute('aria-label', 'Care Bridge is typing');
+                    typing.innerHTML = '<i></i><i></i><i></i>';
+                    chat.appendChild(typing);
+                    scrollToLatest();
+                    await wait(item.typing);
+                    if (thisRun !== runId) return;
+                    typing.remove();
+                    continue;
+                }
+                await wait(item.sent ? 450 : 180);
+                if (thisRun !== runId) return;
+                addMessage(item);
+            }
+        }
+
+        replay.addEventListener('click', playConversation);
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => {
+            const open = navLinks.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', String(open));
+            menuToggle.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+        });
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+        }));
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+        playConversation();
+    </script>
+</body>
+
+</html>
