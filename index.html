@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f7f8f5">
     <meta name="description"
-        content="Care Bridge for professionals — receive clear job alerts, accept assignments, and grow your service business.">
-    <title>Care Bridge — For Service Professionals</title>
+        content="Care Bridge staff portal — receive auto-assigned tickets for your department, track your shift, and close jobs with a timestamp.">
+    <title>Care Bridge — Staff &amp; Field Team Portal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -68,7 +68,6 @@
         }
 
         nav {
-            /* position: sticky; */
             top: 0;
             z-index: 50;
             background: rgba(247, 248, 245, .88);
@@ -265,7 +264,7 @@
             color: var(--green)
         }
 
-        /* HERO VISUAL — Provider Dashboard Mockup */
+        /* HERO VISUAL — On-Call / Assigned Today mockup */
         .hero-visual {
             position: relative;
             min-height: 530px;
@@ -354,14 +353,14 @@
             font-size: 1rem
         }
 
-        .float-stat .fa-coins {
+        .float-stat .fa-hourglass-half {
             background: #fef3c7;
             color: #d97706
         }
 
-        .float-stat .fa-star {
-            background: #fce7f3;
-            color: #db2777
+        .float-stat .fa-user-clock {
+            background: #dbeafe;
+            color: #2563eb
         }
 
         .float-stat div strong {
@@ -380,7 +379,7 @@
             white-space: nowrap
         }
 
-        /* Dashboard app mockup — provider POV */
+        /* Staff dashboard mockup */
         .app-mockup {
             position: relative;
             z-index: 3;
@@ -450,16 +449,17 @@
             box-shadow: 0 3px 8px #00000012
         }
 
-        .app-earnings {
+        /* On-call status block */
+        .app-status {
             background: linear-gradient(140deg, #176b55 0%, #0f5240 100%);
             border-radius: 18px;
-            padding: 16px;
+            padding: 15px 16px;
             color: #fff;
             position: relative;
             overflow: hidden
         }
 
-        .app-earnings:after {
+        .app-status:after {
             content: "";
             position: absolute;
             right: -20px;
@@ -470,27 +470,38 @@
             background: #ffffff0f
         }
 
-        .app-earnings small {
+        .app-status small {
             font-size: .62rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: .06em;
-            color: #a7d6bb
+            color: #a7d6bb;
+            display: flex;
+            align-items: center;
+            gap: 6px
         }
 
-        .app-earnings strong {
+        .app-status small .live-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #6ee7a0;
+            box-shadow: 0 0 0 3px #6ee7a033
+        }
+
+        .app-status strong {
             display: block;
-            font-size: 1.55rem;
+            font-size: 1.15rem;
             font-weight: 800;
-            letter-spacing: -.5px;
-            margin-top: 3px
+            letter-spacing: -.3px;
+            margin-top: 5px
         }
 
-        .app-earnings .trend {
+        .app-status .dept {
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            font-size: .68rem;
+            font-size: .66rem;
             font-weight: 700;
             background: #ffffff1a;
             padding: 3px 8px;
@@ -499,6 +510,7 @@
             color: #c4ead1
         }
 
+        /* Assigned ticket */
         .app-job {
             background: #fff;
             border: 1px solid #e2e8f0;
@@ -537,6 +549,19 @@
             font-size: .66rem;
             color: var(--muted);
             font-weight: 600
+        }
+
+        .app-job-tag {
+            margin-left: auto;
+            font-size: .58rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            color: #b45309;
+            background: #fef3c7;
+            padding: 3px 7px;
+            border-radius: 20px;
+            white-space: nowrap
         }
 
         .app-job-loc {
@@ -583,6 +608,7 @@
             color: var(--muted)
         }
 
+        /* Queue */
         .app-secondary-title {
             font-size: .66rem;
             color: var(--muted);
@@ -815,7 +841,7 @@
             line-height: 1.75
         }
 
-        /* PAYOUT / EARNINGS SECTION */
+        /* QUEUE / SHIFT SECTION (was payout) */
         .payout {
             padding: 90px 0
         }
@@ -920,43 +946,77 @@
             display: inline-block
         }
 
-        .payout-chart {
-            height: 120px;
-            display: flex;
-            align-items: flex-end;
-            gap: 8px;
-            padding-top: 10px
-        }
-
-        .payout-chart .bar {
-            flex: 1;
-            background: #dbe9df;
-            border-radius: 6px 6px 3px 3px;
-            position: relative;
-            transition: background .2s
-        }
-
-        .payout-chart .bar:hover {
-            background: #bfdccc
-        }
-
-        .payout-chart .bar.highlight {
-            background: var(--green)
-        }
-
-        .payout-chart .bar span {
-            position: absolute;
-            bottom: -22px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: .62rem;
+        /* Queue rows */
+        .queue-title {
+            font-size: .72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .06em;
             color: var(--muted);
-            font-weight: 700;
+            margin-bottom: 12px
+        }
+
+        .queue-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #edf0ec
+        }
+
+        .queue-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0
+        }
+
+        .queue-time {
+            font-family: Manrope, sans-serif;
+            font-weight: 800;
+            font-size: .82rem;
+            color: var(--green);
+            min-width: 46px
+        }
+
+        .queue-info {
+            flex: 1;
+            min-width: 0
+        }
+
+        .queue-info strong {
+            display: block;
+            font-size: .88rem;
+            color: var(--ink);
+            letter-spacing: -.2px
+        }
+
+        .queue-info small {
+            font-size: .72rem;
+            color: var(--muted)
+        }
+
+        .queue-tag {
+            font-size: .6rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            padding: 4px 8px;
+            border-radius: 20px;
             white-space: nowrap
         }
 
-        .payout-chart-wrap {
-            padding-bottom: 26px
+        .queue-tag.now {
+            background: #fef3c7;
+            color: #b45309
+        }
+
+        .queue-tag.next {
+            background: #e0e7ff;
+            color: #3730a3
+        }
+
+        .queue-tag.done {
+            background: #dcfce7;
+            color: #15803d
         }
 
         /* DEMO */
@@ -1296,11 +1356,6 @@
             font-weight: 800
         }
 
-        .accent {
-            color: #075e54;
-            font-weight: 700
-        }
-
         .message p+p {
             margin-top: 6px
         }
@@ -1430,71 +1485,6 @@
             white-space: nowrap
         }
 
-        .assignment {
-            margin-top: 8px;
-            overflow: hidden;
-            border: 1px solid #e5ece8;
-            border-radius: 9px;
-            background: #fff
-        }
-
-        .assignment-banner {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px;
-            background: #e8f7ed;
-            color: #187546;
-            font-size: 8px;
-            font-weight: 800
-        }
-
-        .assignment-body {
-            padding: 9px
-        }
-
-        .plumber {
-            display: flex;
-            align-items: center;
-            gap: 8px
-        }
-
-        .plumber-avatar {
-            display: grid;
-            width: 34px;
-            height: 34px;
-            flex-shrink: 0;
-            place-items: center;
-            border-radius: 50%;
-            background: #e9f1ed;
-            color: #466c5a;
-            font-size: 15px
-        }
-
-        .plumber-info {
-            flex: 1;
-            min-width: 0
-        }
-
-        .plumber-name {
-            color: #213b31;
-            font-size: 10px;
-            font-weight: 800
-        }
-
-        .plumber-role {
-            margin-top: 2px;
-            color: #82918a;
-            font-size: 8px
-        }
-
-        .rating {
-            color: #bd8112;
-            font-size: 9px;
-            font-weight: 800;
-            white-space: nowrap
-        }
-
         .eta-panel {
             display: flex;
             align-items: center;
@@ -1523,54 +1513,6 @@
             color: #16683d;
             font-size: 11px;
             font-weight: 800
-        }
-
-        .track {
-            display: flex;
-            align-items: center;
-            margin: 10px 4px 4px
-        }
-
-        .track i {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #cfd8dc;
-            flex: none
-        }
-
-        .track i.on {
-            background: #075e54
-        }
-
-        .track i.now {
-            background: #f0a030;
-            box-shadow: 0 0 0 3px #f0a0302e
-        }
-
-        .track u {
-            flex: 1;
-            height: 2px;
-            background: #cfd8dc;
-            text-decoration: none
-        }
-
-        .track u.on {
-            background: #075e54
-        }
-
-        .steps {
-            display: flex;
-            justify-content: space-between;
-            font-size: 7px;
-            color: #71817f
-        }
-
-        .arrival-note {
-            margin-top: 7px;
-            color: #61746a;
-            font-size: 9px;
-            line-height: 1.5
         }
 
         .typing {
@@ -1688,7 +1630,7 @@
 
         /* CTA BAND */
         .cta-band {
-            padding: 100px 100px;
+            padding: 100px 100px
         }
 
         .cta-panel {
@@ -2097,12 +2039,12 @@
                 padding: 13px
             }
 
-            .app-earnings {
+            .app-status {
                 padding: 13px
             }
 
-            .app-earnings strong {
-                font-size: 1.3rem
+            .app-status strong {
+                font-size: 1rem
             }
 
             .floating-badge {
@@ -2226,18 +2168,18 @@
 
     <nav>
         <div class="wrap nav-inner">
-            <a class="brand" href="#home" aria-label="Care Bridge for providers">
+            <a class="brand" href="#home" aria-label="Care Bridge staff portal">
                 <span class="brand-mark"><i class="fa-solid fa-bridge"></i></span>Care Bridge <span
-                    style="color:var(--muted);font-weight:600;margin-left:6px;font-size:.9rem;">for pros</span>
+                    style="color:var(--muted);font-weight:600;margin-left:6px;font-size:.9rem;">staff portal</span>
             </a>
             <div class="nav-links" id="navLinks">
-                <a href="#benefits">Why Care Bridge</a>
-                <a href="#how">How it works</a>
-                <a href="#demo">Job alerts</a>
-                <a href="#payout">Earnings</a>
+                <a href="#benefits">How dispatch works</a>
+                <a href="#how">Your shift</a>
+                <a href="#demo">Dispatch message</a>
+                <a href="#queue">Queue view</a>
             </div>
             <div class="nav-actions">
-                <a class="nav-cta" href="#demo">Apply as a pro <i class="fa-solid fa-arrow-right"></i></a>
+                <a class="nav-cta" href="#home">Sign in to shift <i class="fa-solid fa-arrow-right"></i></a>
                 <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false"><i
                         class="fa-solid fa-bars"></i></button>
             </div>
@@ -2249,88 +2191,86 @@
         <!-- HERO -->
         <section class="wrap hero" id="home">
             <div class="hero-copy">
-                <div class="eyebrow"><i class="fa-solid fa-briefcase"></i> For service professionals</div>
-                <h1>Steady work.<br><em>Clear jobs.</em></h1>
-                <p>Care Bridge brings local service requests to your phone — with the right details up front, a simple
-                    way to accept, and steady visibility on what's coming next.</p>
+                <div class="eyebrow"><i class="fa-solid fa-headset"></i> Internal portal · department staff</div>
+                <h1>You're on call.<br><em>We'll bring the work.</em></h1>
+                <p>Care Bridge dispatches customer requests to the right department — and assigns them to whoever is on
+                    call. Your queue is here, in order, with the customer details up front.</p>
                 <div class="hero-actions">
-                    <a class="btn btn-primary" href="#demo">See a job alert <i class="fa-solid fa-arrow-right"></i></a>
-                    <a class="btn btn-secondary" href="#how">How it works</a>
+                    <a class="btn btn-primary" href="#demo">See a dispatch <i class="fa-solid fa-arrow-right"></i></a>
+                    <a class="btn btn-secondary" href="#how">Your shift, explained</a>
                 </div>
                 <div class="hero-notes">
-                    <span><i class="fa-solid fa-check-circle"></i> Verified requests</span>
-                    <span><i class="fa-solid fa-bell"></i> Instant job alerts</span>
-                    <span><i class="fa-solid fa-chart-line"></i> Grow your business</span>
+                    <span><i class="fa-solid fa-check-circle"></i> Auto-assigned tickets</span>
+                    <span><i class="fa-solid fa-route"></i> Routed by department</span>
+                    <span><i class="fa-solid fa-clock"></i> Timestamped for the team</span>
                 </div>
             </div>
 
-            <div class="hero-visual" aria-label="Provider dashboard app preview">
-                <div class="floating-badge"><i class="fa-solid fa-star"></i> Top rated pros</div>
-                <div class="float-stat top-right"><i class="fa-solid fa-coins"></i>
-                    <div><strong>$1,240</strong><span>This week</span></div>
+            <div class="hero-visual" aria-label="Staff dashboard preview">
+                <div class="floating-badge"><i class="fa-solid fa-headset"></i> Plumbing · on call</div>
+                <div class="float-stat top-right"><i class="fa-solid fa-hourglass-half"></i>
+                    <div><strong>8 min</strong><span>Avg. accept</span></div>
                 </div>
-                <div class="float-stat bottom-left"><i class="fa-solid fa-star"></i>
-                    <div><strong>4.9 ★</strong><span>Avg. rating</span></div>
+                <div class="float-stat bottom-left"><i class="fa-solid fa-user-clock"></i>
+                    <div><strong>3 on shift</strong><span>Your department</span></div>
                 </div>
 
                 <div class="app-mockup">
                     <div class="app-screen">
                         <div class="app-content">
 
-                            <!-- Top bar -->
                             <div class="app-topbar">
                                 <div class="app-topbar-left">
-                                    <small>Welcome back</small>
-                                    <strong>Mike R.</strong>
+                                    <small>On call now</small>
+                                    <strong>Mike R. · Plumbing</strong>
                                 </div>
                                 <img class="app-topbar-avatar"
                                     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
-                                    alt="Provider avatar">
+                                    alt="Staff avatar">
                             </div>
 
-                            <!-- Earnings -->
-                            <div class="app-earnings">
-                                <small>This week's earnings</small>
-                                <strong>$1,240.00</strong>
-                                <span class="trend"><i class="fa-solid fa-arrow-up"></i> 18% vs last week</span>
+                            <!-- On-call status -->
+                            <div class="app-status">
+                                <small><span class="live-dot"></span> On call · shift active</small>
+                                <strong>Plumbing department</strong>
+                                <span class="dept"><i class="fa-solid fa-layer-group"></i> Assigned to you</span>
                             </div>
 
-                            <!-- New job -->
+                            <!-- Assigned ticket -->
                             <div class="app-job">
                                 <div class="app-job-header">
                                     <div class="app-job-icon"><i class="fa-solid fa-faucet-drip"></i></div>
                                     <div>
                                         <strong>Kitchen tap leak</strong>
-                                        <small>Plumbing · 12 Oak Ave.</small>
+                                        <small>Ticket #4821 · 12 Oak Ave.</small>
                                     </div>
+                                    <span class="app-job-tag">Assigned</span>
                                 </div>
                                 <div class="app-job-loc">
-                                    <i class="fa-solid fa-location-dot"></i> 2.4 km away · ETA 20 min
+                                    <i class="fa-solid fa-location-dot"></i> Customer home · 2.4 km · arriving 20 min
                                 </div>
                                 <div class="app-job-actions">
-                                    <button class="job-accept">Accept</button>
-                                    <button class="job-decline">Decline</button>
+                                    <button class="job-accept">Acknowledge</button>
+                                    <button class="job-decline">Need backup</button>
                                 </div>
                             </div>
 
-                            <!-- Upcoming -->
-                            <div class="app-secondary-title">Upcoming today</div>
+                            <div class="app-secondary-title">Next in queue</div>
                             <div class="app-secondary">
-                                <i class="fa-solid fa-broom"></i>
-                                <span>Deep clean · 4 Oak Ave.</span>
-                                <small>2:30 PM</small>
+                                <i class="fa-solid fa-wrench"></i>
+                                <span>Bathroom pipe · 4 Oak Ave.</span>
+                                <small>11:30 AM</small>
                             </div>
                             <div class="app-secondary">
-                                <i class="fa-solid fa-leaf"></i>
-                                <span>Lawn care · 8 Elm St.</span>
-                                <small>4:15 PM</small>
+                                <i class="fa-solid fa-faucet"></i>
+                                <span>Outdoor tap · 8 Elm St.</span>
+                                <small>1:45 PM</small>
                             </div>
 
-                            <!-- Bottom nav -->
                             <div class="app-nav">
                                 <i class="fa-solid fa-house"></i>
                                 <i class="fa-solid fa-briefcase active"></i>
-                                <i class="fa-solid fa-wallet"></i>
+                                <i class="fa-solid fa-clock-rotate-left"></i>
                                 <i class="fa-solid fa-user"></i>
                             </div>
 
@@ -2343,12 +2283,13 @@
         <!-- TRUST BAR -->
         <div class="trust-bar">
             <div class="wrap trust-inner">
-                <p>Trusted by service professionals across the network</p>
+                <p>Used by department teams across the network</p>
                 <div class="trust-logos">
-                    <span>Plumbers Guild</span>
-                    <span>HomeCare Co.</span>
-                    <span>UrbanClean</span>
-                    <span>GreenWorks</span>
+                    <span>Plumbing</span>
+                    <span>Electrical</span>
+                    <span>Cleaning</span>
+                    <span>Garden</span>
+                    <span>Care</span>
                 </div>
             </div>
         </div>
@@ -2357,31 +2298,34 @@
         <section class="benefits" id="benefits">
             <div class="wrap">
                 <div class="section-head">
-                    <span class="section-kicker">Why professionals choose Care Bridge</span>
-                    <h2>Fewer surprises.<br>More done.</h2>
-                    <p>We built Care Bridge for the people doing the work — so you spend less time chasing details and
-                        more time on the job.</p>
+                    <span class="section-kicker">How dispatch works for staff</span>
+                    <h2>Less searching.<br>More doing.</h2>
+                    <p>You don't browse jobs or compete for work. Requests come to your department, and the on-call
+                        person is assigned — with the customer details up front.</p>
                 </div>
                 <div class="benefit-grid">
                     <article class="benefit-card">
-                        <div class="benefit-icon"><i class="fa-solid fa-bell"></i></div>
-                        <h3>Instant job alerts</h3>
-                        <p>New requests land on WhatsApp or SMS with the customer, address, and job scope.</p>
+                        <div class="benefit-icon"><i class="fa-solid fa-route"></i></div>
+                        <h3>Routed by department</h3>
+                        <p>Each request is categorised by the customer's need and routed straight to the right team.</p>
                     </article>
                     <article class="benefit-card">
-                        <div class="benefit-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                        <h3>Verified customers</h3>
-                        <p>Requests come with confirmed details, so you know who you're showing up for.</p>
+                        <div class="benefit-icon"><i class="fa-solid fa-user-check"></i></div>
+                        <h3>Assigned to on-call</h3>
+                        <p>Whoever is on shift for that department gets the ticket automatically — no queue to fight.
+                        </p>
                     </article>
                     <article class="benefit-card">
-                        <div class="benefit-icon"><i class="fa-solid fa-chart-line"></i></div>
-                        <h3>Efficiency tracked</h3>
-                        <p>Start and finish timestamps feed your record — good work gets recognised.</p>
+                        <div class="benefit-icon"><i class="fa-solid fa-stopwatch"></i></div>
+                        <h3>Timestamps per job</h3>
+                        <p>Accept, arrival, and completion are logged. Your record reflects the work you actually did.
+                        </p>
                     </article>
                     <article class="benefit-card">
-                        <div class="benefit-icon"><i class="fa-solid fa-wallet"></i></div>
-                        <h3>Clear earnings</h3>
-                        <p>See what you've earned, what's pending, and where the week is heading.</p>
+                        <div class="benefit-icon"><i class="fa-solid fa-users-gear"></i></div>
+                        <h3>Backup when you need it</h3>
+                        <p>Flag a job for backup and your supervisor reassigns. The customer still gets a clear update.
+                        </p>
                     </article>
                 </div>
             </div>
@@ -2392,81 +2336,96 @@
             <div class="wrap how-layout">
                 <div class="section-head">
                     <span class="section-kicker">A calmer way to work</span>
-                    <h2>From job alert to job done.</h2>
-                    <p>Simple steps keep the work clear and the hand-offs clean — from your first notification to your
-                        final update.</p>
-                    <a class="btn btn-primary" style="margin-top:24px" href="#demo">Watch the alert demo <i
+                    <h2>From dispatch to close.</h2>
+                    <p>Simple steps keep the shift clear — from the moment a request lands to the moment your department
+                        closes it.</p>
+                    <a class="btn btn-primary" style="margin-top:24px" href="#demo">See the dispatch message <i
                             class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <div class="steps">
                     <article class="step">
                         <div class="step-num">01</div>
                         <div>
-                            <h3>Get a job alert</h3>
-                            <p>A new request arrives with the customer's details, address, and job scope — no
-                                back-and-forth needed.</p>
+                            <h3>Request lands</h3>
+                            <p>The customer's request is categorised and routed to the right department — plumbing,
+                                cleaning, care, and so on.</p>
                         </div>
                     </article>
                     <article class="step">
                         <div class="step-num">02</div>
                         <div>
-                            <h3>Accept & go</h3>
-                            <p>Review the job, accept it, and head out. Arrival is logged so the customer knows when
-                                you're close.</p>
+                            <h3>You get assigned</h3>
+                            <p>Because you're on call for that department, the ticket is assigned to you — with
+                                customer, address, and scope already attached.</p>
                         </div>
                     </article>
                     <article class="step">
                         <div class="step-num">03</div>
                         <div>
-                            <h3>Finish & get recognised</h3>
-                            <p>Complete the job with a timestamp. Your efficiency and ratings are tracked — the best
-                                work rises.</p>
+                            <h3>Arrive & close</h3>
+                            <p>Mark arrival, finish the job, and close the ticket. The customer gets a clean update and
+                                your timestamps are logged.</p>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- PAYOUT SECTION -->
-        <section class="payout" id="payout">
+        <!-- QUEUE / SHIFT SECTION (was payout) -->
+        <section class="payout" id="queue">
             <div class="wrap payout-grid">
                 <div class="payout-text">
-                    <span class="section-kicker">Built for steady income</span>
-                    <h2>See your work,<br>in numbers.</h2>
-                    <p>A clean view of your week: what you've earned, what's coming next, and how your efficiency is
-                        trending — so you can plan with confidence.</p>
+                    <span class="section-kicker">Your queue, in order</span>
+                    <h2>The shift,<br>not the scramble.</h2>
+                    <p>See what's now, what's next, and what's already done — without refreshing an inbox or waiting for
+                        a supervisor to call.</p>
                     <div class="payout-list">
-                        <div class="payout-item"><i class="fa-solid fa-check"></i><span>Track accepted, in-progress, and
-                                completed jobs in one place</span></div>
-                        <div class="payout-item"><i class="fa-solid fa-check"></i><span>Weekly earnings summary with
-                                clear trend visibility</span></div>
-                        <div class="payout-item"><i class="fa-solid fa-check"></i><span>Efficiency based on real start
-                                and finish timestamps</span></div>
+                        <div class="payout-item"><i class="fa-solid fa-check"></i><span>Live queue of assigned tickets
+                                for your department</span></div>
+                        <div class="payout-item"><i class="fa-solid fa-check"></i><span>Clear status per job: now, next,
+                                done</span></div>
+                        <div class="payout-item"><i class="fa-solid fa-check"></i><span>Timestamps logged for every
+                                arrive and close</span></div>
                     </div>
                 </div>
                 <div class="payout-visual">
                     <div class="payout-stat-row">
                         <div class="payout-stat">
-                            <small>This week</small>
-                            <strong>$1,240</strong>
-                            <span><i class="fa-solid fa-arrow-up"></i> 18% vs last week</span>
+                            <small>Assigned today</small>
+                            <strong>6</strong>
+                            <span><i class="fa-solid fa-check"></i> 4 closed</span>
                         </div>
                         <div class="payout-stat">
-                            <small>Completed jobs</small>
-                            <strong>14</strong>
-                            <span><i class="fa-solid fa-check"></i> 100% on time</span>
+                            <small>Avg. response</small>
+                            <strong>8 min</strong>
+                            <span><i class="fa-solid fa-arrow-down"></i> vs team avg.</span>
                         </div>
                     </div>
-                    <div class="payout-chart-wrap">
-                        <div class="payout-chart">
-                            <div class="bar" style="height:45%"><span>Mon</span></div>
-                            <div class="bar" style="height:65%"><span>Tue</span></div>
-                            <div class="bar" style="height:52%"><span>Wed</span></div>
-                            <div class="bar highlight" style="height:88%"><span>Thu</span></div>
-                            <div class="bar" style="height:70%"><span>Fri</span></div>
-                            <div class="bar" style="height:40%"><span>Sat</span></div>
-                            <div class="bar" style="height:22%"><span>Sun</span></div>
+
+                    <div class="queue-title">Today · plumbing</div>
+                    <div class="queue-row">
+                        <div class="queue-time">Now</div>
+                        <div class="queue-info">
+                            <strong>Kitchen tap leak · 12 Oak Ave.</strong>
+                            <small>Ticket #4821 · assigned to you</small>
                         </div>
+                        <span class="queue-tag now">On the way</span>
+                    </div>
+                    <div class="queue-row">
+                        <div class="queue-time">11:30</div>
+                        <div class="queue-info">
+                            <strong>Bathroom pipe · 4 Oak Ave.</strong>
+                            <small>Ticket #4824 · queued</small>
+                        </div>
+                        <span class="queue-tag next">Next</span>
+                    </div>
+                    <div class="queue-row">
+                        <div class="queue-time">9:15</div>
+                        <div class="queue-info">
+                            <strong>Sink replacement · 8 Elm St.</strong>
+                            <small>Ticket #4818 · closed 10:02</small>
+                        </div>
+                        <span class="queue-tag done">Done</span>
                     </div>
                 </div>
             </div>
@@ -2476,24 +2435,24 @@
         <section class="demo" id="demo">
             <div class="wrap demo-inner">
                 <div class="demo-copy">
-                    <span class="section-kicker">The professional experience</span>
-                    <h2>One alert.<br>A clear next step.</h2>
-                    <p>See how a simple WhatsApp job alert looks — with the customer details, job scope, and a one-tap
-                        way to accept.</p>
+                    <span class="section-kicker">The dispatch message</span>
+                    <h2>One alert.<br>Already yours.</h2>
+                    <p>Because you're on call, the ticket arrives already assigned. Just acknowledge, head out, and
+                        close it out.</p>
                     <div class="demo-points">
                         <div class="demo-point"><i class="fa-solid fa-check"></i><span>Customer, address, and job scope
                                 in one message</span></div>
-                        <div class="demo-point"><i class="fa-solid fa-check"></i><span>Accept or decline without leaving
-                                the chat</span></div>
-                        <div class="demo-point"><i class="fa-solid fa-check"></i><span>Arrival and completion updates
-                                stay in one thread</span></div>
+                        <div class="demo-point"><i class="fa-solid fa-check"></i><span>Acknowledge with one tap — no
+                                accept/decline dance</span></div>
+                        <div class="demo-point"><i class="fa-solid fa-check"></i><span>Arrival and completion stay in
+                                one thread</span></div>
                     </div>
-                    <p class="demo-hint">Illustrative concept demo · The messages and provider details are example
-                        content, not a live service connection.</p>
+                    <p class="demo-hint">Illustrative concept demo · The messages and staff details are example content,
+                        not a live service connection.</p>
                 </div>
 
                 <div class="phone-stage">
-                    <div class="phone" aria-label="Animated Care Bridge provider WhatsApp alert">
+                    <div class="phone" aria-label="Animated Care Bridge dispatch message">
                         <div class="screen">
                             <div class="island"></div>
                             <div class="statusbar">
@@ -2503,9 +2462,9 @@
                             </div>
                             <header class="wa-header">
                                 <i class="fa-solid fa-arrow-left back"></i>
-                                <div class="wa-avatar"><i class="fa-solid fa-briefcase"></i></div>
+                                <div class="wa-avatar"><i class="fa-solid fa-headset"></i></div>
                                 <div class="contact">
-                                    <div class="contact-name">Care Bridge Jobs <span class="verified"><i
+                                    <div class="contact-name">Care Bridge Dispatch <span class="verified"><i
                                                 class="fa-solid fa-check"></i></span></div>
                                     <div class="contact-status"><span class="online-dot"></span> online</div>
                                 </div>
@@ -2513,7 +2472,7 @@
                                         class="fa-solid fa-phone"></i><i class="fa-solid fa-ellipsis-vertical"></i>
                                 </div>
                             </header>
-                            <section class="chat" id="chat" aria-label="Provider WhatsApp conversation"
+                            <section class="chat" id="chat" aria-label="Dispatch WhatsApp conversation"
                                 aria-live="polite"></section>
                             <div class="composer">
                                 <i class="fa-regular fa-face-smile composer-icon"></i>
@@ -2525,7 +2484,7 @@
                         </div>
                     </div>
                     <button class="replay" id="replay" type="button"><i class="fa-solid fa-rotate-left"></i> Replay
-                        alert</button>
+                        dispatch</button>
                 </div>
             </div>
         </section>
@@ -2535,12 +2494,11 @@
             <div class="wrap">
                 <div class="cta-panel">
                     <div>
-                        <h2>Ready to take the next job?</h2>
-                        <p>Join the Care Bridge network and get clear, verified service requests delivered to your
-                            phone.</p>
+                        <h2>Sign in and start your shift.</h2>
+                        <p>See what's assigned, what's next, and what's already closed — all in one place for your
+                            department.</p>
                     </div>
-                    <a class="btn-white" href="#demo">Apply as a professional <i
-                            class="fa-solid fa-arrow-right"></i></a>
+                    <a class="btn-white" href="#home">Sign in to shift <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
@@ -2553,20 +2511,19 @@
                 <div class="footer-brand">
                     <a class="brand" href="#home"><span class="brand-mark"><i class="fa-solid fa-bridge"></i></span>Care
                         Bridge</a>
-                    <p>Connecting households with the help they need — and helping professionals grow with steady, clear
-                        work.</p>
+                    <p>Internal staff portal · Requests routed by department, assigned to the on-call person.</p>
                 </div>
                 <div class="footer-links">
-                    <a href="#benefits">Why Care Bridge</a>
-                    <a href="#how">How it works</a>
-                    <a href="#demo">Job alerts</a>
-                    <a href="#payout">Earnings</a>
+                    <a href="#benefits">How dispatch works</a>
+                    <a href="#how">Your shift</a>
+                    <a href="#demo">Dispatch message</a>
+                    <a href="#queue">Queue view</a>
                     <a href="#home">Sign in</a>
                 </div>
             </div>
             <div class="footer-bottom">
                 <span>© <span id="year"></span> Care Bridge. All rights reserved.</span>
-                <span>Built for the people doing the work.</span>
+                <span>Built for the teams on shift.</span>
             </div>
         </div>
     </footer>
@@ -2581,12 +2538,12 @@
         const stamp = (time, sent = false) =>
             `<div class="meta">${time}${sent ? ' <i class="fa-solid fa-check-double ticks"></i>' : ''}</div>`;
 
-        /* Provider-focused conversation */
+        /* Dispatch-focused conversation — no accept/decline, just acknowledge */
         const conversation = [
-            { time: '10:14 AM', html: `<p>🔔 <strong>New job nearby</strong></p><p>A new plumbing request just came in. Here are the details:</p><div class="ticket"><div class="ticket-top"><div class="ticket-check"><i class="fa-solid fa-faucet-drip"></i></div><div><div class="ticket-label">Ticket #4821</div><div class="ticket-number">Kitchen tap leak</div></div></div><div class="ticket-divider"></div><div class="ticket-bottom"><small>Plumbing · Standard</small><span class="status-tag">2.4 km away</span></div></div><div class="address"><i class="fa-solid fa-location-dot"></i><div><b>12 Oak Avenue, Apartment 3B</b><span>Customer address · confirmed</span></div></div><p style="margin-top:7px">Job scope: leaking kitchen tap, slow drip. Customer is home now.</p><div class="options"><div class="option"><span class="option-number">1</span>Accept job</div><div class="option"><span class="option-number">2</span>Decline</div></div>` },
-            { sent: true, time: '10:15 AM', html: `<p>1 — Accept job</p>` },
+            { time: '10:14 AM', html: `<p>🔔 <strong>Ticket assigned to you</strong></p><p>You're on call for Plumbing. Here are the details:</p><div class="ticket"><div class="ticket-top"><div class="ticket-check"><i class="fa-solid fa-faucet-drip"></i></div><div><div class="ticket-label">Ticket #4821</div><div class="ticket-number">Kitchen tap leak</div></div></div><div class="ticket-divider"></div><div class="ticket-bottom"><small>Plumbing · Standard</small><span class="status-tag">Assigned</span></div></div><div class="address"><i class="fa-solid fa-location-dot"></i><div><b>12 Oak Avenue, Apartment 3B</b><span>Customer address · confirmed</span></div></div><p style="margin-top:7px">Job scope: leaking kitchen tap, slow drip. Customer is home now.</p><div class="options"><div class="option"><span class="option-number">1</span>Acknowledge</div><div class="option"><span class="option-number">2</span>Need backup</div></div>` },
+            { sent: true, time: '10:15 AM', html: `<p>1 — Acknowledge</p>` },
             { typing: 900 },
-            { time: '10:15 AM', html: `<p>✅ <strong>Job accepted.</strong></p><p>The customer has been notified that you're on the way. Your arrival will be logged automatically.</p><div class="eta-panel"><div class="eta-label"><i class="fa-solid fa-car-side"></i><span>Estimated arrival</span></div><div class="eta-value">20 min</div></div><div class="track"><i class="on"></i><u class="on"></u><i class="now"></i><u></u><i></i></div><div class="steps"><span>Accepted</span><span>On the way</span><span>Arrived</span></div>` },
+            { time: '10:15 AM', html: `<p>✅ <strong>Ticket acknowledged.</strong></p><p>Customer has been notified you're on the way. Your arrival will be logged automatically.</p><div class="eta-panel"><div class="eta-label"><i class="fa-solid fa-car-side"></i><span>Estimated arrival</span></div><div class="eta-value">20 min</div></div>` },
             { typing: 1000 },
             { time: '10:16 AM', html: `<p>💡 <strong>Quick tip</strong></p><p>The customer mentioned the tap was making a slight hissing sound. If you need any extra parts, just reply here and we'll log it to the ticket.</p>` },
             { sent: true, time: '10:36 AM', html: `<p>I'm here at the address.</p>` },
@@ -2594,12 +2551,10 @@
             { time: '10:36 AM', html: `<p>📍 <strong>Arrival logged</strong> at 10:36 AM.</p><p>Let us know when the job is complete so we can update the customer and close the ticket.</p>` },
             { sent: true, time: '11:04 AM', html: `<p>All done. Replaced the washer.</p>` },
             { typing: 1000 },
-            { time: '11:04 AM', html: `<p>🌟 <strong>Job complete</strong></p><div class="ticket"><div class="ticket-top"><div class="ticket-check"><i class="fa-solid fa-check"></i></div><div><div class="ticket-label">Ticket closed</div><div class="ticket-number">#4821</div></div></div><div class="ticket-divider"></div><div class="ticket-bottom"><small>Start 10:36 · Finish 11:04</small><span class="status-tag">28 min</span></div></div><p style="margin-top:7px">Your efficiency has been logged. Payment will be processed at the end of the week. Thanks for the great work, Mike!</p>` }
+            { time: '11:04 AM', html: `<p>🌟 <strong>Ticket closed</strong></p><div class="ticket"><div class="ticket-top"><div class="ticket-check"><i class="fa-solid fa-check"></i></div><div><div class="ticket-label">Ticket closed</div><div class="ticket-number">#4821</div></div></div><div class="ticket-divider"></div><div class="ticket-bottom"><small>Start 10:36 · Finish 11:04</small><span class="status-tag">28 min</span></div></div><p style="margin-top:7px">Your timestamps have been logged for the department. Nice work, Mike — the next ticket will route to you automatically if you're still on call.</p>` }
         ];
 
-        function scrollToLatest() {
-            chat.scrollTop = chat.scrollHeight;
-        }
+        function scrollToLatest() { chat.scrollTop = chat.scrollHeight }
 
         function addMessage(item) {
             const message = document.createElement('div');
@@ -2612,7 +2567,6 @@
         async function playConversation() {
             const thisRun = ++runId;
             chat.innerHTML = '<div class="date-pill">TODAY</div><div class="notice"><i class="fa-solid fa-lock"></i> Messages are secured with end-to-end encryption.</div>';
-
             for (const item of conversation) {
                 if (thisRun !== runId) return;
                 if (item.typing) {
